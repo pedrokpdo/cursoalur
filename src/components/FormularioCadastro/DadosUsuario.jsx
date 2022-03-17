@@ -11,7 +11,7 @@ function DadosUsuario() {
             <TextField variant="outlined"
                 margin="normal"
                 fullWidth id="senha" label="senha" type="password" />
-            <Button  variant="contained" color="primary" type="submit">cadastrar</Button>
+            <Button variant="contained" color="primary" type="submit">cadastrar</Button>
         </form>
     )
 }
