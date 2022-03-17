@@ -7,20 +7,17 @@ function DadosUsuario({ aoEnviar, validacoes }) {
 
   const [erros, setErros] = useState({ senha: { valido: true, texto: "" } });
 
-
   function validarCampos(event) {
-    const { name, value } = event.target
-    const novoEstado = { ...erros }
-    novoEstado[name] = validacoes[name](value)
-    setErros(novoEstado)
-
+    const { name, value } = event.target;
+    const novoEstado = { ...erros };
+    novoEstado[name] = validacoes[name](value);
+    setErros(novoEstado);
   }
 
   function possoEnviar() {
     for (let campo in erros) {
-
       if (!erros[campo].valido) {
-        return false
+        return false;
       }
     }
     return true;
@@ -32,7 +29,6 @@ function DadosUsuario({ aoEnviar, validacoes }) {
         if (possoEnviar()) {
           aoEnviar({ email, senha });
         }
-
       }}
     >
       <TextField
@@ -41,9 +37,9 @@ function DadosUsuario({ aoEnviar, validacoes }) {
           setEmail(event.target.value);
         }}
         id="email"
+        name="email"
         label="email"
         type="email"
-        name="email"
         required
         variant="outlined"
         margin="normal"
@@ -54,13 +50,12 @@ function DadosUsuario({ aoEnviar, validacoes }) {
         onChange={(event) => {
           setSenha(event.target.value);
         }}
-
         onBlur={validarCampos}
         error={!erros.senha.valido}
         helperText={erros.senha.texto}
         id="senha"
-        label="senha"
         name="senha"
+        label="senha"
         type="password"
         required
         variant="outlined"
@@ -68,7 +63,7 @@ function DadosUsuario({ aoEnviar, validacoes }) {
         fullWidth
       />
       <Button type="submit" variant="contained" color="primary">
-        Proximo
+        Próximo
       </Button>
     </form>
   );

@@ -7,27 +7,22 @@ function DadosPessoais({ aoEnviar, validacoes }) {
   const [cpf, setCpf] = useState("");
   const [promocoes, setPromocoes] = useState(true);
   const [novidades, setNovidades] = useState(false);
-  const [erros, setErros] = useState({ cpf: { valido: true, texto: "" }, nome: {valido:true, texto:""} });
-
+  const [erros, setErros] = useState({ cpf: { valido: true, texto: "" }, nome: { valido: true, texto: "" } });
 
   function validarCampos(event) {
-    const { name, value } = event.target
-    const novoEstado = { ...erros }
-    novoEstado[name] = validacoes[name](value)
-    setErros(novoEstado)
-
+    const { name, value } = event.target;
+    const novoEstado = { ...erros };
+    novoEstado[name] = validacoes[name](value);
+    setErros(novoEstado);
   }
-
   function possoEnviar() {
     for (let campo in erros) {
-
       if (!erros[campo].valido) {
-        return false
+        return false;
       }
     }
     return true;
   }
-
   return (
     <form
       onSubmit={(event) => {
@@ -35,7 +30,6 @@ function DadosPessoais({ aoEnviar, validacoes }) {
         if (possoEnviar()) {
           aoEnviar({ nome, sobrenome, cpf, novidades, promocoes });
         }
-
       }}
     >
       <TextField
@@ -48,9 +42,9 @@ function DadosPessoais({ aoEnviar, validacoes }) {
         helperText={erros.nome.texto}
         id="nome"
         label="Nome"
+        name="nome"
         variant="outlined"
         margin="normal"
-        name="nome"
         fullWidth
       />
       <TextField
@@ -59,10 +53,10 @@ function DadosPessoais({ aoEnviar, validacoes }) {
           setSobrenome(event.target.value);
         }}
         id="sobrenome"
+        name="sobrenome"
         label="Sobrenome"
         variant="outlined"
         margin="normal"
-        name="sobrenome"
         fullWidth
       />
       <TextField
@@ -110,7 +104,7 @@ function DadosPessoais({ aoEnviar, validacoes }) {
       />
 
       <Button type="submit" variant="contained" color="primary">
-        Proximo
+        Próximo
       </Button>
     </form>
   );

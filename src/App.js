@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import FormularioCadastro from "./components/FormularioCadastro/FormularioCadastro";
 import 'fontsource-roboto';
+import {Container, Typography } from "@material-ui/core"
 
-import { Container, Typography } from "@material-ui/core"
 import {validarCPF, validarSenha} from "./models/cadastro"
 class App extends Component {
   render() {
@@ -16,7 +16,7 @@ class App extends Component {
   }
 }
 
-function aoEnviarForm(dados) {
+function aoEnviarForm(dados){
   console.log(dados);
 }
 
